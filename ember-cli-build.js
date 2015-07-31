@@ -1,9 +1,32 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var env = EmberApp.env();
 
 module.exports = function(defaults) {
+  var prodLikeEnvs = ['production', 'staging'];
+  var isProductionLikeBuild = prodLikeEnvs.indexOf(env) > -1;
+
+  var cdnHost, origin;
+  if (env === 'staging') {
+    origin  = 'https://staging.example.org';
+    cdnHost = 'https://1234.cloudfront.net/';
+  } else if (env === 'production') {
+    origin  = 'https://example.org';
+    cdnHost = 'https://5678.cloudfront.net/';
+  }
+
   var app = new EmberApp(defaults, {
-    // Add options here
+    origin: origin,
+
+    SRI: {
+      runsIn: prodLikeEnvs
+    },
+    fingerprint: {
+      enabled: isProductionLikeBuild,
+
+      // If you comment this line out, you get the integrity hashes again.
+      prepend: cdnHost
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
