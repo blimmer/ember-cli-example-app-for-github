@@ -7,7 +7,7 @@ export default function() {
 
     Note: these only affect routes defined *after* them!
   */
-  this.namespace = 'http://api.example.org';    // make this `api`, for example, if your API is namespaced
+  // this.namespace = '';    // make this `api`, for example, if your API is namespaced
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
 
   /*
@@ -26,7 +26,10 @@ export default function() {
     this.get('/contacts/:id', 'user');
     this.get('/contacts/:id', ['contact', 'addresses']);
   */
-  this.get('/foos');
+  this.get('foos');
+  this.put('foos/:id', function() {
+    alert('put!');
+  });
 
   /*
     POST shorthands

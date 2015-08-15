@@ -3,5 +3,6 @@
 {{#each model as |foo|}}
   <div class='foo'>
     {{foo.name}}
+    <button {{action 'changeName' foo}}>Change Name</button>
   </div>
 {{/each}}
