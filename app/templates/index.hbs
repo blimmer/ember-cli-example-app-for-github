@@ -1,0 +1,22 @@
+{{#each model as |event|}}
+  {{event.name}}
+
+  <h3>Primary Contacts</h3>
+  <ul>
+    {{#each event.primaryContacts as |pc|}}
+      <li>
+        {{pc.name}}
+      </li>
+    {{/each}}
+  </ul>
+
+
+  <h3>Additional Contacts</h3>
+  <ul>
+    {{#each event.additionalContacts as |ac|}}
+      <li>
+        {{ac.name}}
+      </li>
+    {{/each}}
+  </ul>
+{{/each}}
