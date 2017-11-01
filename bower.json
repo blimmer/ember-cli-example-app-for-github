@@ -1,5 +1,6 @@
 {
   "name": "ember-cli-example-app-for-github",
   "dependencies": {
+    "js-cookie": "~1.5.1"
   }
 }
